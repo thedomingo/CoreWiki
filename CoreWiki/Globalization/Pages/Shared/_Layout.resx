@@ -123,6 +123,9 @@
   <data name="menu_AllArticles" xml:space="preserve">
     <value>All Articles</value>
   </data>
+  <data name="menu_FeaturedArticles" xml:space="preserve">
+    <value>Featured Articles</value>
+  </data>
   <data name="menu_LatestChanges" xml:space="preserve">
     <value>Latest Changes</value>
   </data>

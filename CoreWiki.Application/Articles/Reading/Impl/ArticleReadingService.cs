@@ -77,5 +77,10 @@ namespace CoreWiki.Application.Articles.Reading.Impl
 		{
 			return _repository.IncrementViewCount(slug);
 		}
+
+		public async Task<List<ArticleReadingDto>> GetFeaturedArticles(int numOfArticlesToGet)
+		{
+			return _mapper.Map<List<ArticleReadingDto>>(await _repository.GetFeaturedArticles(numOfArticlesToGet));
+		}
 	}
 }

@@ -16,6 +16,8 @@ namespace CoreWiki.Data.Abstractions.Interfaces
 
 		Task<List<Article>> GetLatestArticles(int numOfArticlesToGet);
 
+		Task<List<Article>> GetFeaturedArticles(int numOfArticlesToGet);
+
 		Task<Article> CreateArticleAndHistory(Article article);
 
 		(IEnumerable<Article>, int) GetArticlesForSearchQuery(string filteredQuery, int offset, int resultsPerPage);

@@ -27,7 +27,14 @@ namespace CoreWiki.Data.EntityFramework.Repositories
 			return articles.Select(a => a.ToDomain()).ToList();
 		}
 
-
+		public async Task<List<Article>> GetFeaturedArticles(int numOfArticlesToGet)
+		{
+			var articles = await Context.Articles
+				.AsNoTracking()
+				.OrderByDescending(a => a.ViewCount).Take(numOfArticlesToGet).ToListAsync();
+			return articles.Select(a => a.ToDomain()).ToList();
+		}
+		
 		public async Task<Article> GetArticleBySlug(string articleSlug)
 		{
 			var article = await Context.Articles

@@ -16,6 +16,7 @@ namespace CoreWiki.Application.Articles.Reading
 		Task<ArticleReadingDto> GetArticleWithHistoriesBySlug(string articleSlug);
 
 		Task<List<ArticleReadingDto>> GetLatestArticles(int numOfArticlesToGet);
+		Task<List<ArticleReadingDto>> GetFeaturedArticles(int numOfArticlesToGet);
 		Task IncrementViewCount(string slug);
 	}
 }

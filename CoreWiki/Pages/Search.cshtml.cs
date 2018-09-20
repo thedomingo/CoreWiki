@@ -76,5 +76,27 @@ namespace CoreWiki.Pages
 			SearchResult.TotalResults = SearchResult.Results.Count;
 			return Page();
 		}
+
+		public async Task<IActionResult> OnGetFeaturedArticlesAsync()
+		{
+			var qry = new GetFeaturedArticlesQuery(5);
+			var results = await _mediator.Send(qry);
+
+			SearchResult = new SearchResultDto<ArticleSummary>
+			{
+				Results = (from article in results
+						   select new ArticleSummary
+						   {
+							   Slug = article.Slug,
+							   Topic = article.Topic,
+							   Published = article.Published,
+							   ViewCount = article.ViewCount
+						   }).ToList(),
+				ResultsPerPage = 11,
+				CurrentPage = 1
+			};
+			SearchResult.TotalResults = SearchResult.Results.Count;
+			return Page();
+		}
 	}
 }

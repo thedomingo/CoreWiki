@@ -12,7 +12,8 @@ namespace CoreWiki.Application.Articles.Reading.Queries
 			IRequestHandler<GetIsTopicAvailableQuery, bool>,
 			IRequestHandler<GetSlugHistoryQuery, SlugHistoryDto>,
 			IRequestHandler<GetArticleWithHistoriesBySlugQuery, ArticleReadingDto>,
-			IRequestHandler<GetLatestArticlesQuery, List<ArticleReadingDto>>
+			IRequestHandler<GetLatestArticlesQuery, List<ArticleReadingDto>>,
+			IRequestHandler<GetFeaturedArticlesQuery, List<ArticleReadingDto>>
 	{
 
 		private readonly IArticleReadingService _articleReadingService;
@@ -50,6 +51,11 @@ namespace CoreWiki.Application.Articles.Reading.Queries
 		public Task<List<ArticleReadingDto>> Handle(GetLatestArticlesQuery request, CancellationToken cancellationToken)
 		{
 			return _articleReadingService.GetLatestArticles(request.NumOfArticlesToGet);
+		}
+
+		public Task<List<ArticleReadingDto>> Handle(GetFeaturedArticlesQuery request, CancellationToken cancellationToken)
+		{
+			return _articleReadingService.GetFeaturedArticles(request.NumOfArticlesToGet);
 		}
 	}
 }
